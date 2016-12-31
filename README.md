@@ -12,9 +12,9 @@
 | Smartphone |                           |                         |
 |:-----------|:--------------------------|:------------------------|
 | id         | serial                    | primary key             |
-| Category_id| serial                    | foreign key             |
+| category_id| serial                    | foreign key             |
 | name       | varchar(255)              | not null default ''     |
-| Description| varchar(255)              | not null default ''     |
+| description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |
 | created_at | timestamp with time zone  | not null default now()  |
 | updated_at | timestamp with time zone  | not null default now()  |
@@ -23,9 +23,9 @@
 | Computer    |                           |                        |
 |:------------|:--------------------------|:-----------------------|
 | id         | serial                    | primary key             |
-| Category_id| serial                    | foreign key             |
+| category_id| serial                    | foreign key             |
 | name       | varchar(255)              | not null default ''     |
-| Description| varchar(255)              | not null default ''     |
+| description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |
 | created_at | timestamp with time zone  | not null default now()  |
 | updated_at | timestamp with time zone  | not null default now()  |
@@ -33,9 +33,9 @@
 | Travel        |                           |                        |
 |:--------------|:--------------------------|:-----------------------|
 | id           | serial                    | primary key             |
-| Category_id  | serial                    | foreign key             |
+| category_id  | serial                    | foreign key             |
 | name         | varchar(255)              | not null default ''     |
-| Description  | varchar(255)              | not null default ''     |
+| description  | varchar(255)              | not null default ''     |
 | url          | varchar(255)              | not null default ''     |
 | created_at   | timestamp with time zone  | not null default now()  |
 | updated_at   | timestamp with time zone  | not null default now()  |
