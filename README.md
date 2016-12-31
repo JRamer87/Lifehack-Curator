@@ -12,7 +12,7 @@
 | Smartphone |                           |                         |
 |:-----------|:--------------------------|:------------------------|
 | id         | serial                    | primary key             |
-| category_id| serial                    | foreign key             |
+| category_id| integer                   | foreign key             |
 | name       | varchar(255)              | not null default ''     |
 | description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |
@@ -23,7 +23,7 @@
 | Computer    |                           |                        |
 |:------------|:--------------------------|:-----------------------|
 | id         | serial                    | primary key             |
-| category_id| serial                    | foreign key             |
+| category_id| integer                   | foreign key             |
 | name       | varchar(255)              | not null default ''     |
 | description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |
@@ -33,7 +33,7 @@
 | Travel        |                           |                        |
 |:--------------|:--------------------------|:-----------------------|
 | id           | serial                    | primary key             |
-| category_id  | serial                    | foreign key             |
+| category_id  | integer                   | foreign key             |
 | name         | varchar(255)              | not null default ''     |
 | description  | varchar(255)              | not null default ''     |
 | url          | varchar(255)              | not null default ''     |
