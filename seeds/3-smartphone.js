@@ -5,9 +5,10 @@ exports.seed = function(knex) {
         .then(() => knex('computer')
             .insert(
                 [{
-                    name: 'computer',
-                    name: 'smartphone',
-                    name: 'travel'
+                    name: '6 Smartphone Life Hacks',
+                    // category_id: 'smartphone',
+                    description: 'Six smartphone life hacks you should know!',
+                    url: 'https://www.youtube.com/watch?v=08nkKJSNFA8'
                 }]));
 };
 
