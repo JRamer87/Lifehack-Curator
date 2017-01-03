@@ -13,6 +13,7 @@
 |:-----------|:--------------------------|:------------------------|
 | id         | serial                    | primary key             |
 | category_id| integer                   | foreign key             |
+| user_id    | integer                   | foreign key             |
 | name       | varchar(255)              | not null default ''     |
 | description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |
@@ -24,6 +25,7 @@
 |:------------|:--------------------------|:-----------------------|
 | id         | serial                    | primary key             |
 | category_id| integer                   | foreign key             |
+| user_id    | integer                   | foreign key             |
 | name       | varchar(255)              | not null default ''     |
 | description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |
@@ -34,6 +36,7 @@
 |:--------------|:--------------------------|:-----------------------|
 | id           | serial                    | primary key             |
 | category_id  | integer                   | foreign key             |
+| user_id      | integer                   | foreign key             |
 | name         | varchar(255)              | not null default ''     |
 | description  | varchar(255)              | not null default ''     |
 | url          | varchar(255)              | not null default ''     |

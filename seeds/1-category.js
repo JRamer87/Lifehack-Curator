@@ -6,13 +6,15 @@
 exports.seed = function(knex) {
     return knex('category')
         .del()
-        .then(() => knex.raw("ALTER SEQUENCE sports_id_seq RESTART WITH 1"))
+        .then(() => knex.raw("ALTER SEQUENCE category_id_seq RESTART WITH 1"))
         .then(() => knex('category')
             .insert(
                 [{
                     /*Is each item it's own insert????*/
-                    name: 'computer',
-                    name: 'smartphone',
+                    name: 'computer'
+                }, {
+                    name: 'smartphone'
+                }, {
                     name: 'travel'
                 }]));
 };

@@ -19,6 +19,11 @@ exports.up = function(knex) {
             .references('category.id')
             .notNullable()
             .onDelete('CASCADE');
+        table.integer('user_id')
+            .unsigned()
+            .references('user.id')
+            .notNullable()
+            .onDelete('CASCADE');
         table.timestamps(true, true);
     });
 };
