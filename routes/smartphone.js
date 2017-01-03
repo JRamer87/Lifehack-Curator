@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/smartphone', (req, res) => {
     knex('smartphone')
         .then((smartphone) => {
-            res.send(smartphone)
+            res.send(smartphone);
         });
 });
 
@@ -36,7 +36,7 @@ router.post('/smartphone', (req, res) => {
             url: req.body.url
         }, '*')
         .then((smartphone) => {
-            knex('smartphone')
+            knex('smartphone');
             console.log(smartphone[0].id);
             res.send(smartphone[0]);
         });

@@ -14,12 +14,10 @@ app.use(bodyParser.json());
 
 const computer = require('./routes/computer');
 app.use(computer);
-//
-//
-// const travel = require('./routes/travel');
-// app.use(travel);
-//
-//
+
+const travel = require('./routes/travel');
+app.use(travel);
+
 const smartphone = require('./routes/smartphone');
 app.use(smartphone);
 
