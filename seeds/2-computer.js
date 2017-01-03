@@ -1,27 +1,17 @@
-exports.seed = function(knex, Promise) {
-    // Deletes ALL existing entries
-    return knex('table_name')
+'use strict';
+
+exports.seed = function(knex) {
+    return knex('Computer')
         .del()
-        .then(function() {
-            return Promise.all([
-                // Inserts seed entries
-                knex('table_name')
-                .insert({
-                    id: 1,
-                    colName: 'rowValue1'
-                }),
-                knex('table_name')
-                .insert({
-                    id: 2,
-                    colName: 'rowValue2'
-                }),
-                knex('table_name')
-                .insert({
-                    id: 3,
-                    colName: 'rowValue3'
-                })
-            ]);
-        });
+        .then(() => knex.raw("ALTER SEQUENCE sports_id_seq RESTART WITH 1"))
+        .then(() => knex('category')
+            .insert(
+                [{
+                    name: "5 Advanced Mac Tricks You've Never Used",
+                    description: "Mac OS X, now named macOS has become remarkably popular in the last several years since its official debut in 2001. Even though the OS is intuitive to use and many users consider themselves 'experts', I have five advanced tips you’ve likely never used.",
+                    url: 'https://www.youtube.com/watch?v=uI4x0wvogco',
+                    category_id: /*???????????*/
+                }]));
 };
 
 

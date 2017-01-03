@@ -8,7 +8,8 @@ exports.seed = function(knex) {
                     name: '6 Smartphone Life Hacks',
                     // category_id: 'smartphone',
                     description: 'Six smartphone life hacks you should know!',
-                    url: 'https://www.youtube.com/watch?v=08nkKJSNFA8'
+                    url: 'https://www.youtube.com/watch?v=08nkKJSNFA8',
+                    category_id: /*???????????*/
                 }]));
 };
 

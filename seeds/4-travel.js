@@ -1,27 +1,17 @@
-exports.seed = function(knex, Promise) {
-    // Deletes ALL existing entries
-    return knex('table_name')
+'use strict';
+
+exports.seed = function(knex) {
+    return knex('travel')
         .del()
-        .then(function() {
-            return Promise.all([
-                // Inserts seed entries
-                knex('table_name')
-                .insert({
-                    id: 1,
-                    colName: 'rowValue1'
-                }),
-                knex('table_name')
-                .insert({
-                    id: 2,
-                    colName: 'rowValue2'
-                }),
-                knex('table_name')
-                .insert({
-                    id: 3,
-                    colName: 'rowValue3'
-                })
-            ]);
-        });
+        .then(() => knex.raw("ALTER SEQUENCE sports_id_seq RESTART WITH 1"))
+        .then(() => knex('travel')
+            .insert(
+                [{
+                    name: 'The Coolest Travel Hacks',
+                    description: 'We tried these travel hacks and thought they were all pretty dope. EXCEPT FOR ONE.',
+                    url: 'https://www.youtube.com/watch?v=_gvA670PKaQ',
+                    category_id: /*???????????*/
+                }]));
 };
 
 
