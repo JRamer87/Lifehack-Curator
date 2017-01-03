@@ -4,7 +4,7 @@ exports.seed = function(knex) {
     return knex('Computer')
         .del()
         .then(() => knex.raw("ALTER SEQUENCE sports_id_seq RESTART WITH 1"))
-        .then(() => knex('category')
+        .then(() => knex('computer')
             .insert(
                 [{
                     name: "5 Advanced Mac Tricks You've Never Used",

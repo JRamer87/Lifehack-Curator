@@ -1,8 +1,8 @@
 exports.seed = function(knex) {
-    return knex('computer')
+    return knex('smartphone')
         .del()
         .then(() => knex.raw("ALTER SEQUENCE sports_id_seq RESTART WITH 1"))
-        .then(() => knex('computer')
+        .then(() => knex('smartphone')
             .insert(
                 [{
                     name: '6 Smartphone Life Hacks',
