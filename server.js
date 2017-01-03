@@ -20,8 +20,8 @@ app.use(computer);
 // app.use(travel);
 //
 //
-// const smartphone = require('./routes/smartphone');
-// app.use(smartphone);
+const smartphone = require('./routes/smartphone');
+app.use(smartphone);
 
 
 app.use((_req, res) => {
