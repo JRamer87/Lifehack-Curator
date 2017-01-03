@@ -21,6 +21,9 @@ app.use(travel);
 const smartphone = require('./routes/smartphone');
 app.use(smartphone);
 
+const users = require('./routes/users');
+app.use(users);
+
 
 app.use((_req, res) => {
     res.sendStatus(404);
