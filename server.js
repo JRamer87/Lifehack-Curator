@@ -24,6 +24,9 @@ app.use(smartphone);
 const users = require('./routes/users');
 app.use(users);
 
+const category = require('./routes/category');
+app.use(category);
+
 
 app.use((_req, res) => {
     res.sendStatus(404);
