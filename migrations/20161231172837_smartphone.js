@@ -21,7 +21,7 @@ exports.up = function(knex) {
             .onDelete('CASCADE');
         table.integer('user_id')
             .unsigned()
-            .references('user.id')
+            .references('users.id')
             .notNullable()
             .onDelete('CASCADE');
         table.timestamps(true, true);
