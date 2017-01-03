@@ -2,7 +2,7 @@
   "name": "lifehack-curator",
   "version": "1.0.0",
   "description": "## Database",
-  "main": "knexfile.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.14.0",
     "knex": "^0.12.6",
