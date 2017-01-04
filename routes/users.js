@@ -2,6 +2,7 @@
 
 const express = require('express');
 const knex = require('../knex');
+const bcrypt = require('bcrypt-as-promised');
 
 /* eslint-disable max-len */
 /* eslint-disable id-length */
@@ -26,16 +27,22 @@ router.get('/users/:id', (req, res) => {
         });
 });
 
-router.post('/users', (req, res) => {
-    knex('users')
-        .insert({
-            user_name: req.body.user_name,
-            hashed_password: req.body.hashed_password
-        }, '*')
+router.post('/users', (req, res, next) => {
+    bcrypt.hash(req.body.password, 12)
+        .then((hashed_password) => {
+            return knex('users')
+                .insert({
+                    user_name: req.body.user_name,
+                    hashed_password: hashed_password
+                }, '*');
+        })
         .then((users) => {
-            knex('users');
-            console.log(users[0].id);
-            res.send(users[0]);
+            const user = users[0];
+            delete user.hashed_password;
+            res.send(user);
+        })
+        .catch((err) => {
+            next(err);
         });
 });
 
