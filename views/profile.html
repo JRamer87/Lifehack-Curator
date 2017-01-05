@@ -34,9 +34,9 @@
       <label for="category">Category:</label>
       <input list="categoryIds" placeholder="Select a category" required>
       <datalist id="categoryIds">
-        <option value="Computer"></option>
-        <option value="Phone"></option>
-        <option value="Travel"></option>
+        <option value="1" class="addHack"></option>
+        <option value="2" class="addHack"></option>
+        <option value="3" class="addHack"></option>
       </datalist><br><br>
       <label for="name">Name:</label>
       <input type="text" placeholder="Name" name="name" id="categoryName" required><br><br>
@@ -50,7 +50,7 @@
         <option value="1"></option>
         <option value="2"></option>
       </datalist><br><br>
-      <input type="submit">
+      <input type="submit" class="addHack">
     </form>
 
 <!-------------UPDATE HACK---------------------->
@@ -62,9 +62,9 @@
   <label for="category">Category:</label>
   <input list="categoryIds" placeholder="Select a category" required>
   <datalist id="updateHackCategoryIds">
-    <option value="Computer"></option>
-    <option value="Phone"></option>
-    <option value="Travel"></option>
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
   </datalist><br><br>
   <label for="postId">Post ID:</label>
   <input list="postIds" placeholder="Enter Post ID" required>
@@ -93,7 +93,7 @@
     <option value="9"></option>
     <option value="10"></option>
   </datalist><br><br>
-  <input type="submit">
+  <input type="submit" class="updateHack">
 </form>
 
 <!-------------DELETE HACK---------------------->
@@ -105,9 +105,9 @@
   <label for="category">Category:</label>
   <input list="categoryIds" placeholder="Select a category" required>
   <datalist id="deleteHackCategoryIds">
-    <option value="Computer"></option>
-    <option value="Phone"></option>
-    <option value="Travel"></option>
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
   </datalist><br><br>
   <label for="postId">Post ID:</label>
   <input list="postIds" placeholder="Enter Post ID" required>
@@ -116,7 +116,7 @@
     <option value="2"></option>
     <option value="3"></option>
   </datalist><br><br>
-  <input type="submit">
+  <input type="submit" class="deleteHack">
 </form>
 
 <!-------------Footer--------------------------->
@@ -131,4 +131,7 @@
         </nav>
     </footer>
 </body>
-</html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+  <script src="profile.js"></script>
+  </html>

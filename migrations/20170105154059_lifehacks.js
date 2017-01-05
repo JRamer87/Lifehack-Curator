@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 
 exports.up = function(knex) {
-    return knex.schema.createTable('computer', (table) => {
+    return knex.schema.createTable('lifehacks', (table) => {
         table.increments();
         table.string('name')
             .notNullable()
@@ -29,14 +29,16 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('computer');
+    return knex.schema.dropTable('lifehacks');
 };
 
+
 /*
-| Computer    |                           |                        |
-|:------------|:--------------------------|:-----------------------|
+| Lifehacks  |                           |                         |
+|:-----------|:--------------------------|:------------------------|
 | id         | serial                    | primary key             |
 | category_id| integer                   | foreign key             |
+| user_id    | integer                   | foreign key             |
 | name       | varchar(255)              | not null default ''     |
 | description| varchar(255)              | not null default ''     |
 | url        | varchar(255)              | not null default ''     |

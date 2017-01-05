@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 
 
+app.use(express.static('public'))
+
 app.disable('x-powered-by');
 app.use(bodyParser.json());
 

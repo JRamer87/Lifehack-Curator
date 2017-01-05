@@ -1,10 +1,10 @@
 'use strict';
 
 exports.seed = function(knex) {
-    return knex('computer')
+    return knex('lifehacks')
         .del()
-        .then(() => knex.raw("ALTER SEQUENCE computer_id_seq RESTART WITH 1"))
-        .then(() => knex('computer')
+        .then(() => knex.raw("ALTER SEQUENCE lifehacks_id_seq RESTART WITH 1"))
+        .then(() => knex('lifehacks')
             .insert(
                 [{
                     name: "5 Advanced Mac Tricks You've Never Used",
@@ -12,13 +12,24 @@ exports.seed = function(knex) {
                     url: 'https://www.youtube.com/watch?v=uI4x0wvogco',
                     category_id: 1,
                     user_id: 1
+                }, {
+                    name: '6 Smartphone Life Hacks',
+                    description: 'Six smartphone life hacks you should know!',
+                    url: 'https://www.youtube.com/watch?v=08nkKJSNFA8',
+                    category_id: 2,
+                    user_id: 1
+                }, {
+                    name: 'The Coolest Travel Hacks',
+                    description: 'We tried these travel hacks and thought they were all pretty dope. EXCEPT FOR ONE.',
+                    url: 'https://www.youtube.com/watch?v=_gvA670PKaQ',
+                    category_id: 3,
+                    user_id: 1
                 }]));
 };
 
-
 /*
-| Computer    |                           |                        |
-|:------------|:--------------------------|:-----------------------|
+| Lifehacks  |                           |                         |
+|:-----------|:--------------------------|:------------------------|
 | id         | serial                    | primary key             |
 | category_id| integer                   | foreign key             |
 | user_id    | integer                   | foreign key             |
