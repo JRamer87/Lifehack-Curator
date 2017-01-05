@@ -10,24 +10,24 @@ const knex = require('../knex');
 const router = express.Router();
 
 
-router.get('/travel', (req, res) => {
-    knex('travel')
-        .then((travel) => {
-            res.send(travel);
+router.get('/lifehacks', (req, res) => {
+    knex('lifehacks')
+        .then((lifehacks) => {
+            res.send(lifehacks);
         });
 });
 
-router.get('/travel/:id', (req, res) => {
-    knex('travel')
+router.get('/lifehacks/:id', (req, res) => {
+    knex('lifehacks')
         .where('id', req.params.id)
         .first()
-        .then((travel) => {
-            res.send(travel);
+        .then((lifehacks) => {
+            res.send(lifehacks);
         });
 });
 
-router.post('/travel', (req, res) => {
-    knex('travel')
+router.post('/lifehacks', (req, res) => {
+    knex('lifehacks')
         .insert({
             user_id: req.body.user_id,
             category_id: req.body.category_id,
@@ -35,34 +35,34 @@ router.post('/travel', (req, res) => {
             description: req.body.description,
             url: req.body.url
         }, '*')
-        .then((travel) => {
-            knex('travel');
-            console.log(travel[0].id);
-            res.send(travel[0]);
+        .then((lifehacks) => {
+            knex('lifehacks');
+            console.log(lifehacks[0].id);
+            res.send(lifehacks[0]);
         });
 });
 
-router.patch('/travel/:id', (req, res) => {
-    knex('travel')
+router.patch('/lifehacks/:id', (req, res) => {
+    knex('lifehacks')
         .where('id', req.params.id)
         .update(req.body)
         .returning(['user_id', 'category_id', 'name', 'description', 'url'])
-        .then((travel) => {
-            res.send(travel[0]);
+        .then((lifehacks) => {
+            res.send(lifehacks[0]);
         });
 });
 
-router.delete('/travel/:id', (req, res) => {
-    knex('travel')
+router.delete('/lifehacks/:id', (req, res) => {
+    knex('lifehacks')
         .where('id', req.params.id)
         .first()
-        .then((travel) => {
-            knex('travel')
+        .then((lifehacks) => {
+            knex('lifehacks')
                 .where('id', req.params.id)
                 .del()
                 .then(() => {
-                    delete travel.id;
-                    res.send(travel);
+                    delete lifehacks.id;
+                    res.send(lifehacks);
                 });
         });
 });
