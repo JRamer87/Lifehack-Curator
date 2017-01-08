@@ -4,31 +4,38 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-// const morgan = require('morgan');
+const category = require('./routes/category');
+const cookieSession = require('cookie-session');
+const env = require('dotenv')
+    .config();
 const port = process.env.PORT || 8000;
 
+app.set('view engine', 'ejs');
 
-app.use(express.static('public'))
+app.use(cookieSession({
+    name: 'session',
+    secret: process.env.SESSION_SECRET,
+}));
+
+
+app.use(express.static('public'));
+app.use(express.static('views'));
 
 app.disable('x-powered-by');
 app.use(bodyParser.json());
 
+const index = require('./routes/index');
+app.use(index);
 
-const computer = require('./routes/computer');
-app.use(computer);
-
-const travel = require('./routes/travel');
-app.use(travel);
-
-const smartphone = require('./routes/smartphone');
-app.use(smartphone);
+const lifehacks = require('./routes/lifehacks');
+app.use(lifehacks);
 
 const users = require('./routes/users');
 app.use(users);
 
-const category = require('./routes/category');
 app.use(category);
 
+app.set('trust proxy', 1) // trust first proxy
 
 app.use((_req, res) => {
     res.sendStatus(404);
