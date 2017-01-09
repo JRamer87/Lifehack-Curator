@@ -25,11 +25,11 @@ $(document)
             .on('click', function(event) {
                 event.preventDefault();
                 console.log('you clicked register');
-                let user_name = $('#userName')
+                let registerUserName = $('#registerUserName')
                     .val();
-                let password = $('#password')
+                let registerPassword = $('#registerPassword')
                     .val();
-                console.log(user_name, password);
+                console.log(registerUserName, registerPassword);
                 $.ajax({
                     url: '/users',
                     method: "POST",
