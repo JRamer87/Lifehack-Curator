@@ -32,25 +32,25 @@
     </section>
     <form action="../routes" method="post">
       <label for="category">Category:</label>
-      <input list="categoryIds" placeholder="Select a category" required>
+      <input id="newHackCategoryId" list="categoryIds" placeholder="Select a category" required>
       <datalist id="categoryIds">
         <option value="1" class="addHack"></option>
         <option value="2" class="addHack"></option>
         <option value="3" class="addHack"></option>
       </datalist><br><br>
       <label for="name">Name:</label>
-      <input type="text" placeholder="Name" name="name" id="categoryName" required><br><br>
+      <input type="text" placeholder="Name" name="name" id="newHackName" required><br><br>
       <label for="description">Description:</label>
-      <input type="text" placeholder="Description" name="description" id="description" required><br><br>
+      <input type="text" placeholder="Description" name="description" id="newHackDescription" required><br><br>
       <label for="url">URL:</label>
-      <input type="text" placeholder="URL" name="url" id="url" required><br><br>
+      <input type="text" placeholder="URL" name="url" id="newHackUrl" required><br><br>
       <label for="userId">User ID:</label>
-      <input list="userIds" placeholder="Enter User ID" required>
+      <input id="newHackUserId" list="userIds" placeholder="Enter User ID" required>
       <datalist id="userIds">
         <option value="1"></option>
         <option value="2"></option>
       </datalist><br><br>
-      <input type="submit" id="addHack" class="addHack">
+      <input type="submit" id="newHack" class="addHack">
     </form>
 
 <!-------------UPDATE HACK---------------------->
@@ -60,27 +60,27 @@
 </section>
 <form action="../routes" method="patch">
   <label for="category">Category:</label>
-  <input list="categoryIds" placeholder="Select a category" required>
+  <input id="updateHackCategory" list="categoryIds" placeholder="Select a category" required>
   <datalist id="updateHackCategoryIds">
     <option value="1"></option>
     <option value="2"></option>
     <option value="3"></option>
   </datalist><br><br>
   <label for="postId">Post ID:</label>
-  <input list="postIds" placeholder="Enter Post ID" required>
+  <input id="updateHackPostId" list="postIds" placeholder="Enter Post ID" required>
   <datalist id="postIds">
     <option value="1"></option>
     <option value="2"></option>
     <option value="3"></option>
   </datalist><br><br>
   <label for="name">Name:</label>
-  <input type="text" placeholder="Name" name="categoryName" id="updateHackCategoryName" required><br><br>
+  <input id="updateHackName" type="text" placeholder="Name" name="categoryName" id="updateHackCategoryName" required><br><br>
   <label for="description">Description:</label>
-  <input type="text" placeholder="Description" name="description" id="newHackDescription" required><br><br>
+  <input type="text" placeholder="Description" name="description" id="updateHackDescription" required><br><br>
   <label for="url">URL:</label>
   <input type="text" placeholder="URL" name="url" id="updateHackUrl" required><br><br>
   <label for="userId">User ID:</label>
-  <input list="userIds" placeholder="Enter User ID" required>
+  <input id="updateHackUserId" list="userIds" placeholder="Enter User ID" required>
   <datalist id="updateHackUserIds">
     <option value="1"></option>
     <option value="2"></option>
@@ -93,7 +93,7 @@
     <option value="9"></option>
     <option value="10"></option>
   </datalist><br><br>
-  <input type="submit" class="updateHack">
+  <input id ="updateHackButton" type="submit" class="updateHack">
 </form>
 
 <!-------------DELETE HACK---------------------->
@@ -103,20 +103,20 @@
 </section>
 <form action="../routes" method="delete">
   <label for="category">Category:</label>
-  <input list="categoryIds" placeholder="Select a category" required>
+  <input id="deleteHackCategory" list="categoryIds" placeholder="Select a category" required>
   <datalist id="deleteHackCategoryIds">
     <option value="1"></option>
     <option value="2"></option>
     <option value="3"></option>
   </datalist><br><br>
   <label for="postId">Post ID:</label>
-  <input list="postIds" placeholder="Enter Post ID" required>
+  <input id="deleteHackPostId" list="postIds" placeholder="Enter Post ID" required>
   <datalist id="deleteHackPostIds">
     <option value="1"></option>
     <option value="2"></option>
     <option value="3"></option>
   </datalist><br><br>
-  <input type="submit" class="deleteHack">
+  <input id="deleteHackButton" type="submit" class="deleteHack">
 </form>
 
 <!-------------Footer--------------------------->
