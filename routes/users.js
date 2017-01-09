@@ -111,11 +111,10 @@ router.post('/session', (req, res, next) => {
         user_name,
         password
     } = req.body;
-
+    console.log("req.body", req.body);
     if (!user_name || user_name.trim() === '') {
         const err = new Error('user_name must not be blank');
         err.status = 400;
-
         return next(err);
     }
 
@@ -140,12 +139,16 @@ router.post('/session', (req, res, next) => {
             }
 
             user = row;
+            // console.log('user validated');
 
             return bcrypt.compare(password, row.hashed_password);
         })
         .then(() => {
             req.session.user_id = user.id;
-            res.sendStatus(200);
+            // res.sendStatus(200);
+            console.log('session created');
+            res.render("index.html");
+
         })
         .catch(bcrypt.MISMATCH_ERROR, () => {
             const err = new Error('Unauthorized');

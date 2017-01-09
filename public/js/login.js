@@ -13,11 +13,25 @@ $(document)
                 let password = $('#password')
                     .val();
                 console.log(user_name, password);
+                let user = {
+                    user_name: user_name,
+                    password: password
+                };
+                console.log(user);
                 $.ajax({
                     url: '/session',
                     method: "POST",
-                    success: function(user_name, password) {
-
+                    data: JSON.stringify({
+                        user_name: user_name,
+                        password: password
+                    }),
+                    dataType: "text",
+                    contentType: "application/json",
+                    success: function(data) {
+                        console.log('response:', data);
+                    },
+                    complete: function() {
+                        console.log('completed');
                     }
                 });
             });
@@ -33,9 +47,12 @@ $(document)
                 $.ajax({
                     url: '/users',
                     method: "POST",
-                    success: function(user_name, password) {
-
-                    }
+                    data: JSON.stringify({
+                        user_name: registerUserName,
+                        password: registerPassword
+                    }),
+                    dataType: "json",
+                    contentType: "application/json",
                 });
             });
     });

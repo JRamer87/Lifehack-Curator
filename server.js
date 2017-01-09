@@ -10,19 +10,20 @@ const env = require('dotenv')
     .config();
 const port = process.env.PORT || 8000;
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 
 app.use(cookieSession({
     name: 'session',
     secret: process.env.SESSION_SECRET,
 }));
 
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use(express.static('views'));
 
 app.disable('x-powered-by');
-app.use(bodyParser.json());
+
 
 const index = require('./routes/index');
 app.use(index);
@@ -35,7 +36,7 @@ app.use(users);
 
 app.use(category);
 
-app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1); // trust first proxy
 
 app.use((_req, res) => {
     res.sendStatus(404);

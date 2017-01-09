@@ -14,6 +14,8 @@ $(document)
                     success: function(data) {
                         var computerResults = JSON.stringify(data);
                         console.log(computerResults);
+                        $('#results')
+                            .text(computerResults);
                     }
                 });
             });
@@ -27,6 +29,8 @@ $(document)
                     success: function(data) {
                         var phoneResults = JSON.stringify(data);
                         console.log(phoneResults);
+                        $('#results')
+                            .append(phoneResults);
                     }
                 });
             });
@@ -40,6 +44,8 @@ $(document)
                     success: function(data) {
                         var travelResults = JSON.stringify(data);
                         console.log(travelResults);
+                        $('#results')
+                            .append(travelResults);
                     }
                 });
             });
