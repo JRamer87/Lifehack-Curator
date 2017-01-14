@@ -19,8 +19,7 @@ router.get('/lifehacks', (req, res) => {
 
 router.get('/lifehacks/:id', (req, res) => {
     knex('lifehacks')
-        .where('id', req.params.id)
-        .first()
+        .where('category_id', req.params.id)
         .then((lifehacks) => {
             res.send(lifehacks);
         });
@@ -42,28 +41,29 @@ router.post('/lifehacks', (req, res) => {
         });
 });
 
-router.patch('/lifehacks/:id', (req, res) => {
+router.patch('/lifehacks', (req, res) => {
+    console.log(req.body);
     knex('lifehacks')
-        .where('id', req.params.id)
-        .update(req.body)
-        .returning(['user_id', 'category_id', 'name', 'description', 'url'])
+        .where('id', req.body.id)
+        .update({
+            category_id: req.body.category_id,
+            name: req.body.name,
+            description: req.body.description,
+            url: req.body.url
+        })
+        .returning(['id', 'category_id', 'name', 'description', 'url'])
         .then((lifehacks) => {
             res.send(lifehacks[0]);
         });
 });
 
-router.delete('/lifehacks/:id', (req, res) => {
+router.delete('/lifehacks', (req, res) => {
+    console.log(req.body.id);
     knex('lifehacks')
-        .where('id', req.params.id)
-        .first()
+        .where('id', req.body.id)
+        .del()
         .then((lifehacks) => {
-            knex('lifehacks')
-                .where('id', req.params.id)
-                .del()
-                .then(() => {
-                    delete lifehacks.id;
-                    res.send(lifehacks);
-                });
+            res.send(lifehacks[0]);
         });
 });
 

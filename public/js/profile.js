@@ -7,23 +7,37 @@ $(document)
             .on('click', function(event) {
                 event.preventDefault();
                 console.log('you clicked new hack');
-                let newitionalHackCategoryId = $('#newHackCategoryId')
-                    .val();
                 let newHackName = $('#newHackName')
                     .val();
                 let newHackDescription = $('#newHackDescription')
                     .val();
                 let newHackUrl = $('#newHackUrl')
                     .val();
+                let newHackCategoryId = $('#newHackCategoryId')
+                    .val();
                 let newHackUserId = $('#newHackUserId')
                     .val();
                 console.log(newHackCategoryId, newHackName, newHackDescription, newHackUrl, newHackUserId);
-                // $.post({
-                //     data: JSON.stringify(formData),
-                //     url: '/lifehacks',
-                //     dataType: 'json',
-                //     contentType: 'application/json; charset=UTF-8'
-                // });
+                $.ajax({
+                    url: '/lifehacks',
+                    method: "POST",
+                    data: JSON.stringify({
+                        category_id: newHackCategoryId,
+                        name: newHackName,
+                        description: newHackDescription,
+                        url: newHackUrl,
+                        user_id: newHackUserId
+                    }),
+                    dataType: "text",
+                    contentType: "application/json",
+                    success: function(data) {
+                        console.log('response:', data);
+                        window.location.replace('index.html');
+                    },
+                    complete: function() {
+                        console.log('completed');
+                    }
+                });
             });
         $('#updateHackButton')
             .on('click', function(event) {
@@ -42,27 +56,52 @@ $(document)
                 let updateHackUserId = $('#updateHackUserId')
                     .val();
                 console.log(updateHackCategoryId, updateHackPostId, updateHackName, updateHackDescription, updateHackUrl, updateHackUserId);
-                $.post({
-                    data: JSON.stringify(formData),
+                $.ajax({
                     url: '/lifehacks',
-                    dataType: 'json',
-                    contentType: 'application/json; charset=UTF-8'
+                    method: "PATCH",
+                    data: JSON.stringify({
+                        category_id: updateHackCategoryId,
+                        name: updateHackName,
+                        description: updateHackDescription,
+                        url: updateHackUrl,
+                        user_id: updateHackUserId,
+                        id: updateHackPostId
+                    }),
+                    dataType: "text",
+                    contentType: "application/json",
+                    success: function(data) {
+                        console.log('response:', data);
+                        window.location.replace('index.html');
+                    },
+                    complete: function() {
+                        console.log('completed');
+                    }
                 });
             });
         $('#deleteHackButton')
             .on('click', function(event) {
                 event.preventDefault();
                 console.log('you clicked delete hack');
-                let deleteHackCategoryId = $('#deleteHackCategory')
-                    .val();
+                // let deleteHackCategoryId = $('#deleteHackCategory')
+                //     .val();
                 let deleteHackPostId = $('#deleteHackPostId')
                     .val();
-                console.log(deleteHackPostId, deleteHackPostId);
-                $.post({
-                    data: JSON.stringify(formData),
+                console.log(deleteHackPostId);
+                $.ajax({
                     url: '/lifehacks',
-                    dataType: 'json',
-                    contentType: 'application/json; charset=UTF-8'
+                    method: "DELETE",
+                    data: JSON.stringify({
+                        id: deleteHackPostId
+                    }),
+                    dataType: "text",
+                    contentType: "application/json",
+                    success: function(data) {
+                        console.log('response:', data);
+                        window.location.replace('index.html');
+                    },
+                    complete: function() {
+                        console.log('completed');
+                    }
                 });
             });
     });

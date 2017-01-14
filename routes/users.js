@@ -145,10 +145,8 @@ router.post('/session', (req, res, next) => {
         })
         .then(() => {
             req.session.user_id = user.id;
-            // res.sendStatus(200);
+            res.sendStatus(200);
             console.log('session created');
-            res.render("index.html");
-
         })
         .catch(bcrypt.MISMATCH_ERROR, () => {
             const err = new Error('Unauthorized');

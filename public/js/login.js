@@ -29,6 +29,7 @@ $(document)
                     contentType: "application/json",
                     success: function(data) {
                         console.log('response:', data);
+                        window.location.replace('index.html');
                     },
                     complete: function() {
                         console.log('completed');
