@@ -1,11 +1,9 @@
-"use strict";
-
 module.exports = {
 
     development: {
         client: 'pg',
         connection: {
-            database: 'glimpse-dev',
+            database: 'lifehacks-dev',
             host: 'localhost'
         }
     },
@@ -13,7 +11,7 @@ module.exports = {
     test: {
         client: 'pg',
         connection: {
-            database: 'glimpse-test',
+            database: 'lifehacks-test',
             host: 'localhost',
         }
     },
