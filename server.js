@@ -5,17 +5,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const category = require('./routes/category');
-const cookieSession = require('cookie-session');
 const env = require('dotenv')
     .config();
 const port = process.env.PORT || 8000;
 
 app.set('view engine', 'html');
 
-app.use(cookieSession({
-    name: 'session',
-    secret: process.env.SESSION_SECRET,
-}));
 
 app.use(bodyParser.json());
 
