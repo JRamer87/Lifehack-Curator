@@ -5,8 +5,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const category = require('./routes/category');
-const env = require('dotenv')
-    .config();
+// const env = require('dotenv')
+//     .config();
 const port = process.env.PORT || 8000;
 
 app.set('view engine', 'html');
