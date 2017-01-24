@@ -3,7 +3,7 @@ module.exports = {
     development: {
         client: 'pg',
         connection: {
-            database: 'lifehacks-dev',
+            database: 'lifehacks',
             host: 'localhost'
         }
     },
@@ -11,7 +11,7 @@ module.exports = {
     test: {
         client: 'pg',
         connection: {
-            database: 'lifehacks-test',
+            database: 'lifehacks',
             host: 'localhost',
         }
     },
