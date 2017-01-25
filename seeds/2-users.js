@@ -1,15 +1,15 @@
-'use strict';
 
-exports.seed = function(knex) {
-    return knex('users')
+
+exports.seed = function (knex) {
+  return knex('users')
         .del()
-        .then(() => knex.raw("ALTER SEQUENCE users_id_seq RESTART WITH 1"))
+        .then(() => knex.raw('ALTER SEQUENCE users_id_seq RESTART WITH 1'))
         .then(() => knex('users')
             .insert(
-                [{
-                    user_name: 'administrator',
-                    hashed_password: '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS'
-                }]));
+          [{
+            user_name: 'administrator',
+            hashed_password: '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS',
+          }]));
 };
 
 

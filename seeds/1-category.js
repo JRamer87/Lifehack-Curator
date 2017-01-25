@@ -1,22 +1,22 @@
-'use strict';
+
 
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
 
-exports.seed = function(knex) {
-    return knex('category')
+exports.seed = function (knex) {
+  return knex('category')
         .del()
-        .then(() => knex.raw("ALTER SEQUENCE category_id_seq RESTART WITH 1"))
+        .then(() => knex.raw('ALTER SEQUENCE category_id_seq RESTART WITH 1'))
         .then(() => knex('category')
             .insert(
-                [{
-                    /*Is each item it's own insert????*/
-                    name: 'computer'
-                }, {
-                    name: 'smartphone'
-                }, {
-                    name: 'travel'
-                }]));
+          [{
+                    /* Is each item it's own insert????*/
+            name: 'computer',
+          }, {
+            name: 'smartphone',
+          }, {
+            name: 'travel',
+          }]));
 };
 
 

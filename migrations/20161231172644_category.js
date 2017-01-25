@@ -1,19 +1,19 @@
-'use strict';
+
 
 /* eslint-disable max-len */
 
-exports.up = function(knex) {
-    return knex.schema.createTable('category', (table) => {
-        table.increments();
-        table.string('name')
+exports.up = function (knex) {
+  return knex.schema.createTable('category', (table) => {
+    table.increments();
+    table.string('name')
             .notNullable()
             .defaultTo('');
-        table.timestamps(true, true);
-    });
+    table.timestamps(true, true);
+  });
 };
 
-exports.down = function(knex) {
-    return knex.schema.dropTable('category');
+exports.down = function (knex) {
+  return knex.schema.dropTable('category');
 };
 
 /*

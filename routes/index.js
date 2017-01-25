@@ -1,4 +1,4 @@
-'use strict';
+
 
 const express = require('express');
 const knex = require('../knex');
@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    res.render('index');
+  res.render('index');
 });
 
 module.exports = router;

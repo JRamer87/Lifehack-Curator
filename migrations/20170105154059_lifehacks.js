@@ -1,35 +1,35 @@
-'use strict';
+
 
 /* eslint-disable max-len */
 
-exports.up = function(knex) {
-    return knex.schema.createTable('lifehacks', (table) => {
-        table.increments();
-        table.string('name')
+exports.up = function (knex) {
+  return knex.schema.createTable('lifehacks', (table) => {
+    table.increments();
+    table.string('name')
             .notNullable()
             .defaultTo('');
-        table.string('description')
+    table.string('description')
             .notNullable()
             .defaultTo('');
-        table.string('url')
+    table.string('url')
             .notNullable()
             .defaultTo('');
-        table.integer('category_id')
+    table.integer('category_id')
             .unsigned()
             .references('category.id')
             .notNullable()
             .onDelete('CASCADE');
-        table.integer('user_id')
+    table.integer('user_id')
             .unsigned()
             .references('users.id')
             .notNullable()
             .onDelete('CASCADE');
-        table.timestamps(true, true);
-    });
+    table.timestamps(true, true);
+  });
 };
 
-exports.down = function(knex) {
-    return knex.schema.dropTable('lifehacks');
+exports.down = function (knex) {
+  return knex.schema.dropTable('lifehacks');
 };
 
 

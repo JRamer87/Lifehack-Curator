@@ -1,4 +1,4 @@
-'use strict';
+
 
 const express = require('express');
 const app = express();
@@ -13,27 +13,27 @@ const router = express.Router();
 
 
 router.get('/users', (req, res) => {
-    knex('users')
+  knex('users')
         .then((users) => {
-            res.send(users);
+          res.send(users);
         });
 });
 
 router.get('/users/:id', (req, res) => {
-    knex('users')
+  knex('users')
         .where('id', req.params.id)
         .first()
         .then((users) => {
-            res.send(users);
+          res.send(users);
         });
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
     // Update views
-    req.session.views = (req.session.views || 0) + 1;
+  req.session.views = (req.session.views || 0) + 1;
 
     // Write response
-    res.end(req.session.views + ' views');
+  res.end(`${req.session.views} views`);
 });
 
 // router.post('/users', (req, res, next) => {
@@ -56,135 +56,132 @@ router.get('/', function(req, res, next) {
 // });
 
 router.post('/users', (req, res, next) => {
-    const {
+  const {
         user_name,
-        password
+        password,
     } = req.body;
 
-    if (!user_name || user_name.trim() === '') {
-        const err = new Error('user_name must not be blank');
-        err.status = 400;
+  if (!user_name || user_name.trim() === '') {
+    const err = new Error('user_name must not be blank');
+    err.status = 400;
 
-        return next(err);
-    }
+    return next(err);
+  }
 
-    if (!password || password.trim() === '') {
-        const err = new Error('Password must not be blank');
-        err.status = 400;
+  if (!password || password.trim() === '') {
+    const err = new Error('Password must not be blank');
+    err.status = 400;
 
-        return next(err);
-    }
+    return next(err);
+  }
 
-    knex('users')
+  knex('users')
         .select(knex.raw('1=1'))
         .where('user_name', user_name)
         .first()
         .then((exists) => {
-            if (exists) {
-                const err = new Error('user_name already exists');
-                err.status = 400;
+          if (exists) {
+            const err = new Error('user_name already exists');
+            err.status = 400;
 
-                throw err;
-            }
+            throw err;
+          }
 
-            return bcrypt.hash(password, 12);
+          return bcrypt.hash(password, 12);
         })
-        .then((hashed_password) => {
-            return knex('users')
+        .then(hashed_password => knex('users')
                 .insert({
-                    user_name,
-                    hashed_password
-                });
-        })
+                  user_name,
+                  hashed_password,
+                }))
         .then(() => {
-            res.sendStatus(200);
+          res.sendStatus(200);
         })
         .catch((err) => {
-            next(err);
+          next(err);
         });
 });
 
 
-
 router.post('/session', (req, res, next) => {
-    const {
+  const {
         user_name,
-        password
+        password,
     } = req.body;
-    console.log("req.body", req.body);
-    if (!user_name || user_name.trim() === '') {
-        const err = new Error('user_name must not be blank');
-        err.status = 400;
-        return next(err);
-    }
+  console.log('req.body', req.body);
+  if (!user_name || user_name.trim() === '') {
+    const err = new Error('user_name must not be blank');
+    err.status = 400;
+    return next(err);
+  }
 
-    if (!password || password.trim() === '') {
-        const err = new Error('Password must not be blank');
-        err.status = 400;
+  if (!password || password.trim() === '') {
+    const err = new Error('Password must not be blank');
+    err.status = 400;
 
-        return next(err);
-    }
+    return next(err);
+  }
 
-    let user;
+  let user;
 
-    knex('users')
+  knex('users')
         .where('user_name', user_name)
         .first()
         .then((row) => {
-            if (!row) {
-                const err = new Error('Unauthorized');
-                err.status = 401;
-
-                throw err;
-            }
-
-            user = row;
-            // console.log('user validated');
-
-            return bcrypt.compare(password, row.hashed_password);
-        })
-        .then(() => {
-            req.session.user_id = user.id;
-            res.sendStatus(200);
-            console.log('session created');
-        })
-        .catch(bcrypt.MISMATCH_ERROR, () => {
+          if (!row) {
             const err = new Error('Unauthorized');
             err.status = 401;
 
             throw err;
+          }
+
+          user = row;
+            // console.log('user validated');
+
+          return bcrypt.compare(password, row.hashed_password);
+        })
+        .then(() => {
+          req.session.user_id = user.id;
+          res.sendStatus(200);
+          console.log('session created');
+        })
+        .catch(bcrypt.MISMATCH_ERROR, () => {
+          const err = new Error('Unauthorized');
+          err.status = 401;
+
+          throw err;
         })
         .catch((err) => {
-            next(err);
+          next(err);
         });
 });
 
 app.delete('/session', (req, res) => {
-    req.session = null;
-    res.sendStatus(200);
+  req.session = null;
+  res.sendStatus(200);
 });
 
 router.patch('/users/:id', (req, res) => {
-    knex('users')
+  knex('users')
         .where('id', req.params.id)
         .update(req.body)
         .returning(['user_id', 'user_name', 'hashed_password'])
         .then((users) => {
-            res.send(users[0]);
+          res.send(users[0]);
         });
 });
 
 router.delete('/users/:id', (req, res) => {
-    knex('users')
+  knex('users')
         .where('id', req.params.id)
         .first()
         .then((users) => {
-            knex('users')
+          knex('users')
                 .where('id', req.params.id)
                 .del()
                 .then(() => {
-                    delete users.id;
-                    res.send(users);
+                  delete users.id;
+                  res.send(users);
                 });
         });
 });
